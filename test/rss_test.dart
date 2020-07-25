@@ -266,6 +266,13 @@ void main() {
     expect(feed.items.first.dc.rights, "rights");
   });
 
+  test("ldnews:thumbnail RSS-Empty.xml", () {
+    var xmlString = File("test/xml/RSS-Empty.xml").readAsStringSync();
+
+    var feed = RssFeed.parse(xmlString);
+    expect(feed.items.first.ldnews_thumbnail_url, "hoge_url");
+  });
+
   test("parse RSS-Empty.xml", () {
     var xmlString = File("test/xml/RSS-Empty.xml").readAsStringSync();
 

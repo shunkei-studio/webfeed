@@ -7,6 +7,7 @@ import 'package:webfeed/domain/rss_source.dart';
 import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
+import '../util/helpers.dart';
 import 'rss_item_itunes.dart';
 
 class RssItem {
@@ -25,6 +26,7 @@ class RssItem {
   final RssEnclosure enclosure;
   final DublinCore dc;
   final RssItemItunes itunes;
+  final String ldnews_thumbnail_url;
 
   RssItem({
     this.title,
@@ -41,6 +43,7 @@ class RssItem {
     this.enclosure,
     this.dc,
     this.itunes,
+    this.ldnews_thumbnail_url,
   });
 
   factory RssItem.parse(XmlElement element) {
@@ -61,6 +64,8 @@ class RssItem {
       enclosure: RssEnclosure.parse(findElementOrNull(element, "enclosure")),
       dc: DublinCore.parse(element),
       itunes: RssItemItunes.parse(element),
+      ldnews_thumbnail_url:
+          findElementOrNull(element, "ldnews:thumbnail").getAttribute("url"),
     );
   }
 }
