@@ -65,7 +65,7 @@ class RssItem {
       dc: DublinCore.parse(element),
       itunes: RssItemItunes.parse(element),
       ldnews_thumbnail_url:
-          findElementOrNull(element, "ldnews:thumbnail").getAttribute("url"),
+          findElementOrNull(element, "ldnews:thumbnail")?.getAttribute("url"),
     );
   }
 }
